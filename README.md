@@ -12,6 +12,7 @@ There are three options to use ServerControl
 Don't forget to configure
 * ServerControl configuration
 * XML Tasks
+* Webinterface template
 
 ## Download and Installation
 
@@ -160,6 +161,10 @@ Description of the tags:
 * sshdirectory = directory for execution of given command
 
 The command of the command-tag will be copied via ssh to the remote system and execute on it. The command result will be saved in the attribute 'lastResult'.
+
+### Webinterface template
+
+tbd
 
 ## Authors
 
