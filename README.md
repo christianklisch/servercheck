@@ -53,9 +53,13 @@ target\appassembler\bin\servercontrol.bat
 
 ## Configuration
 
-### ServerControl
+### Tool ServerControl in config.properties
 
 You'll find the tool configuration in file './bin/config/config.properties' with parameters:
 * port = TCP-Port of webserver for controlling server and services (e.g. 8080)
 * idle_time = Pause between service checks in ms (e.g. 5000 ms)
-* xml_path = Path to your xml-files with task configurations (e.g. ./xml/ or /nas/servercontrol/xml/)
+* xml_path = Path to your XML-files with task configurations (e.g. ./xml/ or /nas/servercontrol/xml/)
+
+### Task configuration in XML-file
+
+In the xml-directory you can create a config for each task. 
