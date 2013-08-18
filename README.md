@@ -152,4 +152,4 @@ If the regular expressions of 'regexOK' and 'regexWarn' doesn't match the 'lastR
 
 ## Copyright and license
 
-Copyright 2013 Christian Klsich, Inc under [the general public license](LICENSE).
+Copyright 2013 Christian Klsich, Inc under [the lpgl](LICENSE).
