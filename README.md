@@ -148,3 +148,8 @@ If the regular expressions of 'regexOK' and 'regexWarn' doesn't match the 'lastR
 **Christian Klisch**
 
 + [http://github.com/christianklisch](http://github.com/christianklisch)
+
+
+## Copyright and license
+
+Copyright 2013 Christian Klsich, Inc under [the general public license](LICENSE).
