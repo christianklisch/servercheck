@@ -100,3 +100,43 @@ Description of the tags:
 * regexOK = regular expression to check for for correct execution result (lastResult)
 * regexWarn = regular expression to check for for warning execution result (lastResult)
 * targetOS = system, where to run script (Windows / Linux)
+
+If the regular expressions of 'regexOK' and 'regexWarn' doesn't match the 'lastResult', an error-icon will be shown on webinterface.
+
+
+#### Excecute-command
+
+An example XML-File for a view-command:
+
+```
+<CommandExec>
+  <filename>r1.xml</filename>
+  <id>r1</id>
+  <description>Skript starting calculator WIN-ONLY</description>
+  <command>
+    @echo off
+    start calc
+  </command>
+  <lastResult>0</lastResult>
+  <lastExecute>
+    <time>1376777069722</time>
+    <timezone>Europe/Berlin</timezone>
+  </lastExecute>
+  <regexOk>0</regexOk>
+  <regexWarn>1</regexWarn>
+  <targetOS>Windows</targetOS>
+</CommandView>
+```
+
+Description of the tags:
+* filename = Filename of the XML-configuration, is set automatically
+* id = first part of filename without extension, must be the same name
+* description = Description of the task
+* command = Command or small skript to execute
+* lastResult = last commandresult, set by ServerControl
+* lastExecute = last timestamp of execution, set by ServerControl
+* regexOK = regular expression to check for for correct execution result (lastResult)
+* regexWarn = regular expression to check for for warning execution result (lastResult)
+* targetOS = system, where to run script (Windows / Linux)
+
+If the regular expressions of 'regexOK' and 'regexWarn' doesn't match the 'lastResult', an error-icon will be shown on webinterface.
