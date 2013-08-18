@@ -104,9 +104,9 @@ Description of the tags:
 If the regular expressions of 'regexOK' and 'regexWarn' doesn't match the 'lastResult', an error-icon will be shown on webinterface.
 
 
-#### Excecute-command
+#### Execute-command
 
-An example XML-File for a view-command:
+An example XML-File for a execute-command:
 
 ```
 <CommandExec>
@@ -141,7 +141,25 @@ Description of the tags:
 
 If the regular expressions of 'regexOK' and 'regexWarn' doesn't match the 'lastResult', an error-icon will be shown on webinterface.
 
+#### Remote execution
 
+To execute a command on a remote server add following tags:
+```
+  ...
+  <sshserver>my-ssh-server.domain</sshserver>
+  <sshuser>root</sshuser>
+  <sshpassword>password</sshpassword>
+  <sshdirectory>/home/sshuser/tmp/</sshdirectory>
+  ...
+```
+
+Description of the tags:
+* sshserver = hostname of the remote system
+* sshuser = loginname for ssh
+* sshpassword = password for sshuser
+* sshdirectory = directory for execution of given command
+
+The command of the command-tag will be copied via ssh to the remote system and execute on it. The command result will be saved in the attribute 'lastResult'.
 
 ## Authors
 
