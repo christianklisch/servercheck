@@ -9,6 +9,10 @@ There are three options to use ServerControl
 * Download the latest release
 * Build from sourcecode
 
+Don't forget to configure
+* ServerControl configuration
+* XML Tasks
+
 ## Download and Installation
 
 Download the latest release from github. 
@@ -46,3 +50,12 @@ sh target/appassembler/bin/servercontrol
 target\appassembler\bin\servercontrol.bat
 
 ```
+
+## Configuration
+
+### ServerControl
+
+You'll find the tool configuration in file './bin/config/config.properties' with parameters:
+* port = TCP-Port of webserver for controlling server and services (e.g. 8080)
+* idle_time = Pause between service checks in ms (e.g. 5000 ms)
+* xml_path = Path to your xml-files with task configurations (e.g. ./xml/ or /nas/servercontrol/xml/)
