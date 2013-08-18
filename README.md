@@ -22,10 +22,10 @@ Download the latest release from github.
 Switch to your install directory 'servercontrol'. Start from commandline with:
 ```
 # Linux
-sh ./bin/servercontrol
+$ sh ./bin/servercontrol
 
 # Windows:
-.\bin\servercontrol.bat
+> .\bin\servercontrol.bat
 
 ```
 
@@ -34,7 +34,7 @@ sh ./bin/servercontrol
 Clone sourcecode and rebuild the project:
 
 ```
-mvn clean validate package appassembler:assemble
+$ mvn clean validate package appassembler:assemble
 ```
 
 
@@ -44,10 +44,10 @@ After assembling sourcecode you have to copy the 'config' and the 'xml' director
 
 ```
 # Linux
-sh target/appassembler/bin/servercontrol
+$ sh target/appassembler/bin/servercontrol
 
 # Windows:
-target\appassembler\bin\servercontrol.bat
+> target\appassembler\bin\servercontrol.bat
 
 ```
 
@@ -62,4 +62,41 @@ You'll find the tool configuration in file './bin/config/config.properties' with
 
 ### Task configuration in XML-file
 
-In the xml-directory you can create a config for each task. 
+In the xml-directory you can create a config for each task. There are different types of tasks:
+* View-command to execute a command to check a service
+* Execute-command to execute a command to control a service
+
+#### View-command
+
+An example XML-File for a view-command:
+
+```
+<CommandView>
+  <filename>r0.xml</filename>
+  <id>r0</id>
+  <description>Skript returning value 0 WIN-ONLY</description>
+  <command>
+    @echo off
+    echo 0
+  </command>
+  <lastResult>0</lastResult>
+  <lastExecute>
+    <time>1376777069722</time>
+    <timezone>Europe/Berlin</timezone>
+  </lastExecute>
+  <regexOk>0</regexOk>
+  <regexWarn>1</regexWarn>
+  <targetOS>Windows</targetOS>
+</CommandView>
+```
+
+Description of the tags:
+* filename = Filename of the XML-configuration, is set automatically
+* id = first part of filename without extension, must be the same name
+* description = Description of the task
+* command = Command or small skript to execute
+* lastResult = last commandresult, set by ServerControl
+* lastExecute = last timestamp of execution, set by ServerControl
+* regexOK = regular expression to check for for correct execution result (lastResult)
+* regexWarn = regular expression to check for for warning execution result (lastResult)
+* targetOS = system, where to run script (Windows / Linux)
