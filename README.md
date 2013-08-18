@@ -140,3 +140,11 @@ Description of the tags:
 * targetOS = system, where to run script (Windows / Linux)
 
 If the regular expressions of 'regexOK' and 'regexWarn' doesn't match the 'lastResult', an error-icon will be shown on webinterface.
+
+
+
+## Authors
+
+**Christian Klisch**
+
++ [http://github.com/christianklisch](http://github.com/christianklisch)
