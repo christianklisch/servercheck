@@ -1,5 +1,4 @@
 # ServerControl
-===========
 
 Open Source tool to view server and service state and control server in your company created and maintained by Christian Klisch.
 
@@ -13,6 +12,18 @@ There are three options to use ServerControl
 ## Download and Installation
 
 Download the latest release from github. 
+
+### Start ServerControl
+
+Switch to your install directory 'servercontrol'. Start from commandline with:
+```
+# Linux
+sh ./bin/servercontrol
+
+# Windows:
+.\bin\servercontrol.bat
+
+```
 
 ## Build from sourcecode
 
