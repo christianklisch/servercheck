@@ -1,3 +1,12 @@
+/target
+.project
+.classpath
+/.settings
+/javadoc
+/uml
+.tmp
+/logs
+
 *.class
 
 # Package Files #

@@ -1,0 +1,15 @@
+<commandView>
+  <filename>r0.xml</filename>
+  <id>r0</id>
+  <description>Skript returning value 0 WIN-ONLY</description>
+  <command>@echo off
+echo 0</command>
+  <lastResult>0</lastResult>
+  <lastExecute>
+    <time>1376921008853</time>
+    <timezone>Europe/Berlin</timezone>
+  </lastExecute>
+  <regexOk>0</regexOk>
+  <regexWarn>1</regexWarn>
+  <targetOS>Windows</targetOS>
+</commandView>
