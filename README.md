@@ -4,7 +4,7 @@ Open Source tool to view server and service state and control server in your com
 
 ## Quick start
 
-There are three options to use ServerControl
+There are two options to use ServerControl
 
 * Download the latest release
 * Build from sourcecode
