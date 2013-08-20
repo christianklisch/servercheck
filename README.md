@@ -175,4 +175,4 @@ tbd
 
 ## Copyright and license
 
-Copyright 2013 Christian Klsich, Inc under [the GPL](LICENSE).
+Copyright 2013 Christian Klsich, released under [the GPL](LICENSE).
