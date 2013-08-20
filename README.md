@@ -16,7 +16,7 @@ Don't forget to configure
 
 ## Download and Installation
 
-Download the latest release from github. 
+Download the latest release from [github project page](http://christianklisch.github.io/servercontrol). 
 
 ### Start ServerControl
 
