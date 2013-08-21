@@ -1,0 +1,17 @@
+<sqlView>
+  <filename>s1.xml</filename>
+  <id>s1</id>
+  <description>select a count of entries of an MySQL DB table</description>
+  <command>SELECT COUNT(*) FROM actions</command>
+  <lastResult>12</lastResult>
+  <lastExecute>
+    <time>1377100699794</time>
+    <timezone>Europe/Berlin</timezone>
+  </lastExecute>
+  <databaseType>MySQL</databaseType>
+  <dbuser>root</dbuser>
+  <dbhost>localhost</dbhost>
+  <dbpassword></dbpassword>
+  <dbport>3306</dbport>
+  <dbname>drupal</dbname>
+</sqlView>

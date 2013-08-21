@@ -82,7 +82,7 @@ An example XML-File for a view-command:
   </command>
   <lastResult>0</lastResult>
   <lastExecute>
-    <time>1376777069722</time>
+    <time>137677706722</time>
     <timezone>Europe/Berlin</timezone>
   </lastExecute>
   <regexOk>0</regexOk>
@@ -120,7 +120,7 @@ An example XML-File for a execute-command:
   </command>
   <lastResult>0</lastResult>
   <lastExecute>
-    <time>1376777069722</time>
+    <time>137677709722</time>
     <timezone>Europe/Berlin</timezone>
   </lastExecute>
   <regexOk>0</regexOk>
@@ -161,6 +161,95 @@ Description of the tags:
 * sshdirectory = directory for execution of given command
 
 The command of the command-tag will be copied via ssh to the remote system and execute on it. The command result will be saved in the attribute 'lastResult'.
+
+
+#### View SQL
+
+An example XML-File for a sql-select-command:
+
+```
+<sqlView>
+  <filename>s1.xml</filename>
+  <id>s1</id>  
+  <command>SELECT COUNT(*) FROM testtable</command>
+  <description>View the entry count in table testtable</description>  
+  <lastResult>12</lastResult>
+  <lastExecute>
+    <time>137709614110</time>
+    <timezone>Europe/Berlin</timezone>
+  </lastExecute>
+  <databaseType>MySQL</databaseType>
+  <dbuser>root</dbuser>
+  <dbhost>localhost</dbhost>
+  <dbpassword></dbpassword>
+  <dbport>3306</dbport>
+  <dbname>testdb</dbname>
+  <regexOk>0</regexOk>
+  <regexWarn>1</regexWarn>  
+</sqlView>
+```
+
+Description of the tags:
+* filename = Filename of the XML-configuration, is set automatically
+* id = first part of filename without extension, must be the same name
+* description = Description of the SQL
+* command = SQL select-command to execute
+* lastResult = last sql-result, set by ServerControl
+* lastExecute = last timestamp of execution, set by ServerControl
+* regexOK = regular expression to check for for correct execution result (lastResult)
+* regexWarn = regular expression to check for for warning execution result (lastResult)
+* databaseType = Kind of DB: (MySQL, Oracle, Postgre, H2)
+* dbuser = username for DB
+* dbpassword = password for dbuser
+* dbhost = hostname of DB
+* dbname = name of DB on host
+* dbport = TCP Port of DB host
+
+Note: Oracle can only connect to instances and not to services.
+
+#### Execute SQL
+
+An example XML-File for a sql-execute-command:
+
+```
+<sqlExec>
+  <filename>s1.xml</filename>
+  <id>s1</id>  
+  <command>DELETE FROM testtable</command>
+  <description>Delete all entries in table testtable</description>  
+  <lastResult>12</lastResult>
+  <lastExecute>
+    <time>137709614110</time>
+    <timezone>Europe/Berlin</timezone>
+  </lastExecute>
+  <databaseType>MySQL</databaseType>
+  <dbuser>root</dbuser>
+  <dbhost>localhost</dbhost>
+  <dbpassword></dbpassword>
+  <dbport>3306</dbport>
+  <dbname>testdb</dbname>
+  <regexOk>0</regexOk>
+  <regexWarn>1</regexWarn>  
+</sqlExec>
+```
+
+Description of the tags:
+* filename = Filename of the XML-configuration, is set automatically
+* id = first part of filename without extension, must be the same name
+* description = Description of the SQL
+* command = SQL execute-command to execute
+* lastResult = last sql-result, set by ServerControl
+* lastExecute = last timestamp of execution, set by ServerControl
+* regexOK = regular expression to check for for correct execution result (lastResult)
+* regexWarn = regular expression to check for for warning execution result (lastResult)
+* databaseType = Kind of DB: (MySQL, Oracle, Postgre, H2)
+* dbuser = username for DB
+* dbpassword = password for dbuser
+* dbhost = hostname of DB
+* dbname = name of DB on host
+* dbport = TCP Port of DB host
+
+Note: Oracle can only connect to instances and not to services.
 
 ### Webinterface template
 

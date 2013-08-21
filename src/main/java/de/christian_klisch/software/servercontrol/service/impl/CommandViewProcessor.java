@@ -1,7 +1,7 @@
 package de.christian_klisch.software.servercontrol.service.impl;
 
 import de.christian_klisch.software.servercontrol.model.CommandView;
-import de.christian_klisch.software.servercontrol.model.Process;
+import de.christian_klisch.software.servercontrol.model.Task;
 import de.christian_klisch.software.servercontrol.service.ProcessorIF;
 
 /**
@@ -26,7 +26,7 @@ import de.christian_klisch.software.servercontrol.service.ProcessorIF;
  */
 public class CommandViewProcessor extends AbstractCommandProcessor implements ProcessorIF {
 
-    public void execute(Process task) {
+    public void execute(Task task) {
 	if (task instanceof CommandView)
 	    super.execute(task);
     }

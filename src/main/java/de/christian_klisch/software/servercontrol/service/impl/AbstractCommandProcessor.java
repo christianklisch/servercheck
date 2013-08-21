@@ -20,6 +20,7 @@ import de.christian_klisch.software.servercontrol.config.Configuration;
 import de.christian_klisch.software.servercontrol.model.Command;
 import de.christian_klisch.software.servercontrol.model.CommandView;
 import de.christian_klisch.software.servercontrol.model.Process;
+import de.christian_klisch.software.servercontrol.model.Task;
 
 /**
  * Processor for abstract commands
@@ -43,7 +44,7 @@ import de.christian_klisch.software.servercontrol.model.Process;
  */
 public class AbstractCommandProcessor implements Configuration {
     
-    protected void execute(Process task) {
+    protected void execute(Task task) {
 	Command v = (Command) task;
 	String returnvalue = "";
 

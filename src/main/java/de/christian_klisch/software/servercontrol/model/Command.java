@@ -1,6 +1,5 @@
 package de.christian_klisch.software.servercontrol.model;
 
-import java.util.GregorianCalendar;
 
 /**
  * Abstract command model.
@@ -22,19 +21,7 @@ import java.util.GregorianCalendar;
  *         along with this program; if not, write to the Free Software
  *         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
-public abstract class Command extends AbstractTask implements Process {
-
-    protected String filename;
-
-    protected String id;
-
-    protected String description;
-
-    protected String command;
-
-    protected String lastResult;
-
-    protected GregorianCalendar lastExecute;
+public abstract class Command extends Task {
 
     protected String sshserver;
 
@@ -43,10 +30,6 @@ public abstract class Command extends AbstractTask implements Process {
     protected String sshpassword;
 
     protected String sshdirectory;
-
-    protected String regexOk;
-
-    protected String regexWarn;
 
     protected String targetOS;
 

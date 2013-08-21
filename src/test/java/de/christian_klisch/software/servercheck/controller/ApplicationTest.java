@@ -12,6 +12,7 @@ import de.christian_klisch.software.servercontrol.controller.Application;
 import de.christian_klisch.software.servercontrol.model.Command;
 import de.christian_klisch.software.servercontrol.model.CommandView;
 import de.christian_klisch.software.servercontrol.model.Process;
+import de.christian_klisch.software.servercontrol.model.Task;
 
 /**
  * JUnit Test.
@@ -85,7 +86,7 @@ public class ApplicationTest extends TestCase {
 
     @Test
     public void testReadTaskFromXML() {
-	Map<String, Process> m = app.readTaskFromXML();
+	Map<String, Task> m = app.readTaskFromXML();
 	assertTrue(m.size() > 0);
     }
 
@@ -94,7 +95,7 @@ public class ApplicationTest extends TestCase {
 
 	Application.getRequestMap().clear();
 
-	Process t = new CommandView();
+	Task t = new CommandView();
 
 	t.setCommand("echo 0");
 	t.setDescription("Deleting skript");
@@ -121,7 +122,7 @@ public class ApplicationTest extends TestCase {
 
 	app.copyTasksInMap(app.readTaskFromXML());
 
-	Process t1 = Application.getRequestMap().get("r0");
+	Task t1 = Application.getRequestMap().get("r0");
 	if (t1 != null)
 	    g1 = t1.getLastExecute().getTimeInMillis();
 
@@ -134,7 +135,7 @@ public class ApplicationTest extends TestCase {
 
 	app.executeAll();
 
-	Process t2 = Application.getRequestMap().get("r0");
+	Task t2 = Application.getRequestMap().get("r0");
 	if (t2 != null)
 	    g2 = t2.getLastExecute().getTimeInMillis();
 

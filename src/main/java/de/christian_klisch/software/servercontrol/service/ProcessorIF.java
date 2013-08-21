@@ -1,6 +1,6 @@
 package de.christian_klisch.software.servercontrol.service;
 
-import de.christian_klisch.software.servercontrol.model.Process;
+import de.christian_klisch.software.servercontrol.model.Task;
 
 /**
  * Interface for task processor.
@@ -24,7 +24,7 @@ import de.christian_klisch.software.servercontrol.model.Process;
  */
 public interface ProcessorIF {
 
-    public void execute(Process task);
+    public void execute(Task task);
 
     public String getClassType();
     

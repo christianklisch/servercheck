@@ -19,14 +19,19 @@ import com.github.mustachejava.MustacheFactory;
 import com.thoughtworks.xstream.XStream;
 
 import de.christian_klisch.software.servercontrol.config.Configuration;
+import de.christian_klisch.software.servercontrol.model.Command;
 import de.christian_klisch.software.servercontrol.model.CommandExec;
 import de.christian_klisch.software.servercontrol.model.CommandView;
 import de.christian_klisch.software.servercontrol.model.Process;
 import de.christian_klisch.software.servercontrol.model.ProcessExec;
 import de.christian_klisch.software.servercontrol.model.ProcessView;
+import de.christian_klisch.software.servercontrol.model.SqlExec;
+import de.christian_klisch.software.servercontrol.model.SqlView;
+import de.christian_klisch.software.servercontrol.model.Task;
 import de.christian_klisch.software.servercontrol.service.ProcessorIF;
 import de.christian_klisch.software.servercontrol.service.impl.CommandExecProcessor;
 import de.christian_klisch.software.servercontrol.service.impl.CommandViewProcessor;
+import de.christian_klisch.software.servercontrol.service.impl.SqlViewProcessor;
 
 /**
  * Controller handling tasks.
@@ -53,7 +58,7 @@ public class Application implements Configuration {
 
     private static String xmlPath = "./xml/";
 
-    private static Map<String, Process> requestMap = new HashMap<String, Process>();
+    private static Map<String, Task> requestMap = new HashMap<String, Task>();
     private static Map<String, ProcessorIF> processorMap = new HashMap<String, ProcessorIF>();
     private static String template = null;
 
@@ -62,6 +67,10 @@ public class Application implements Configuration {
     public Application() {
 	xstream.alias("commandView", CommandView.class);
 	xstream.alias("commandExec", CommandExec.class);
+	xstream.alias("sqlView", SqlView.class);
+	xstream.alias("sqlExec", SqlExec.class);
+
+	xstream.aliasField("command", Command.class, "command");
 
 	this.initTemplateFile();
 	this.initProcessors();
@@ -84,13 +93,16 @@ public class Application implements Configuration {
 
 	ProcessorIF p2 = new CommandExecProcessor();
 	processorMap.put(p2.getClassType(), p2);
+    
+	ProcessorIF p3 = new SqlViewProcessor();
+	processorMap.put(p3.getClassType(), p3);    
     }
 
     public String getTemplate() {
 	return template;
     }
 
-    public static Map<String, Process> getRequestMap() {
+    public static Map<String, Task> getRequestMap() {
 	return requestMap;
     }
 
@@ -106,7 +118,7 @@ public class Application implements Configuration {
 	return mustache.execute(new StringWriter(), params).toString();
     }
 
-    public void saveTaskAsXML(Process task) {
+    public void saveTaskAsXML(Task task) {
 
 	if (task.getFilename() == null)
 	    task.setFilename(task.getId() + FILETYPE);
@@ -130,18 +142,18 @@ public class Application implements Configuration {
 	Iterator<String> keys = requestMap.keySet().iterator();
 
 	while (keys.hasNext()) {
-	    Process task = requestMap.get(keys.next());
+	    Task task = requestMap.get(keys.next());
 	    if (!list.contains(task.getId() + FILETYPE)) {
 		requestMap.remove(task.getId());
 	    }
 	}
     }
 
-    public Map<String, Process> readTaskFromXML() {
+    public Map<String, Task> readTaskFromXML() {
 	File xmldir = new File(xmlPath);
 	String[] files = xmldir.list();
 
-	Map<String, Process> tmpMap = new HashMap<String, Process>();
+	Map<String, Task> tmpMap = new HashMap<String, Task>();
 
 	for (String file : files) {
 	    if (file.endsWith(FILETYPE)) {
@@ -152,7 +164,7 @@ public class Application implements Configuration {
 		    e.printStackTrace();
 		}
 
-		Process t = (Process) xstream.fromXML(xml);
+		Task t = (Task) xstream.fromXML(xml);
 		tmpMap.put(t.getId(), t);
 	    }
 	}
@@ -160,11 +172,11 @@ public class Application implements Configuration {
 	return tmpMap;
     }
 
-    public void copyTasksInMap(Map<String, Process> tasks) {
+    public void copyTasksInMap(Map<String, Task> tasks) {
 	Iterator<String> keys = tasks.keySet().iterator();
 
 	while (keys.hasNext()) {
-	    Process task = tasks.get(keys.next());
+	    Task task = tasks.get(keys.next());
 	    if (!requestMap.containsKey(task.getId())) {
 		requestMap.put(task.getId(), task);
 	    }
@@ -176,7 +188,7 @@ public class Application implements Configuration {
 
 	while (keys.hasNext()) {
 	    try {
-		Process task = requestMap.get(keys.next());
+		Task task = requestMap.get(keys.next());
 		if (task instanceof ProcessView)
 		    this.executeProcess(task);
 	    } catch (Exception e) {
@@ -185,24 +197,24 @@ public class Application implements Configuration {
 	}
     }
 
-    public void executeProcess(Process process) {
+    public void executeProcess(Task process) {
 	ProcessorIF processor = processorMap.get(process.getClass().toString());
 	processor.execute(process);
 	this.saveTaskAsXML(process);
     }
 
     public void executeFromWeb(String key) {
-	Process process = requestMap.get(key);
+	Task process = requestMap.get(key);
 	this.executeProcess(process);
     }
 
-    public Map<String, Process> getAllViews() {
-	Map<String, Process> viewMap = new HashMap<String, Process>();
+    public Map<String, Task> getAllViews() {
+	Map<String, Task> viewMap = new HashMap<String, Task>();
 
 	Iterator<String> keys = requestMap.keySet().iterator();
 
 	while (keys.hasNext()) {
-	    Process task = requestMap.get(keys.next());
+	    Task task = requestMap.get(keys.next());
 	    if (task instanceof ProcessView) {
 		viewMap.put(task.getId(), task);
 	    }
@@ -211,13 +223,13 @@ public class Application implements Configuration {
 	return viewMap;
     }
 
-    public Map<String, Process> getAllExecs() {
-	Map<String, Process> execMap = new HashMap<String, Process>();
+    public Map<String, Task> getAllExecs() {
+	Map<String, Task> execMap = new HashMap<String, Task>();
 
 	Iterator<String> keys = requestMap.keySet().iterator();
 
 	while (keys.hasNext()) {
-	    Process task = requestMap.get(keys.next());
+	    Task task = requestMap.get(keys.next());
 	    if (task instanceof ProcessExec) {
 		execMap.put(task.getId(), task);
 	    }
@@ -226,7 +238,7 @@ public class Application implements Configuration {
 	return execMap;
     }
 
-    public Map<String, Process> getAllProcesses() {
+    public Map<String, Task> getAllProcesses() {
 	return getRequestMap();
     }
 

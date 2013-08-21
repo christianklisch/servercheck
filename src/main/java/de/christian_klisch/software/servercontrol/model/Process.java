@@ -3,7 +3,7 @@ package de.christian_klisch.software.servercontrol.model;
 import java.util.GregorianCalendar;
 
 /**
- * Interface for task model.
+ * Deprecated Interface for task model.
  * 
  * @author Christian Klisch
  * 
@@ -22,6 +22,7 @@ import java.util.GregorianCalendar;
  *         along with this program; if not, write to the Free Software
  *         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
+@Deprecated
 public interface Process {
     public String getId();
 

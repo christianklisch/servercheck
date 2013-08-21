@@ -15,4 +15,9 @@ public interface Configuration {
     public static final String DRIVERDIR = "./lib/";
     public static final String DISABLEJSR199 = "org.apache.jasper.compiler.disablejsr199";
     public static final String WEPPAPPDIR = "META-INF/webapp";
+    
+    public static final String DBDRIVER_MYSQL = "com.mysql.jdbc.Driver";
+    public static final String DBDRIVER_ORACLE = "oracle.jdbc.driver.OracleDriver";
+    public static final String DBDRIVER_H2 = "org.h2.Driver";
+    public static final String DBDRIVER_POSTGRES = "org.postgresql.Driver";
 }

@@ -23,7 +23,7 @@ import java.util.GregorianCalendar;
  *         along with this program; if not, write to the Free Software
  *         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
-public abstract class AbstractTask {
+public abstract class Task {
 
     protected String filename;
 
@@ -108,12 +108,13 @@ public abstract class AbstractTask {
     public String getStatusImage() {
 	String image = "<span class=\"badge badge-important\"><i class=\"icon-remove icon-white\"></i></span>";
 
-	if (this.lastResult.matches(this.regexWarn))
-	    image = "<span class=\"badge badge-warning\"><i class=\"icon-warning-sign\"></i></span>";
+	if (this.lastResult != null) {
+	    if (this.regexWarn != null && this.lastResult.matches(this.regexWarn))
+		image = "<span class=\"badge badge-warning\"><i class=\"icon-warning-sign\"></i></span>";
 
-	if (this.lastResult.matches(this.regexOk))
-	    image = "<span class=\"badge badge-success\"><i class=\"icon-ok icon-white\"></i></span>";
-
+	    if (this.regexOk != null && this.lastResult.matches(this.regexOk))
+		image = "<span class=\"badge badge-success\"><i class=\"icon-ok icon-white\"></i></span>";
+	}
 	return image;
     }
 

@@ -1,7 +1,7 @@
 package de.christian_klisch.software.servercontrol.model;
 
 /**
- * Interface for task model.
+ * Marker-Interface for task model.
  * 
  * @author Christian Klisch
  * 
@@ -20,6 +20,6 @@ package de.christian_klisch.software.servercontrol.model;
  *         along with this program; if not, write to the Free Software
  *         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
-public interface ProcessExec extends Process {
+public interface ProcessExec{
 
 }
