@@ -1,0 +1,14 @@
+# Vendored files and directories are excluded from language
+# statistics.
+#
+# Lines in this file are Regexps that are matched against the file
+# pathname.
+
+
+# jQuery
+- (^|/)jquery([^.]*)(\.min)?\.js$
+- (^|/)jquery\-\d\.\d(\.\d)?(\.min)?\.js$
+
+# Prototype
+- (^|/)bootstrap(.*)\.js$
+- (^|/)bootstrap(.*)\.css$
