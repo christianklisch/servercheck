@@ -6,6 +6,7 @@
 /uml
 .tmp
 /logs
+/xml/null.xml
 
 *.class
 
