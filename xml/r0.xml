@@ -4,9 +4,9 @@
   <description>Skript returning value 0 WIN-ONLY</description>
   <command>@echo off
 echo 0</command>
-  <lastResult>0</lastResult>
+  <lastResult>1</lastResult>
   <lastExecute>
-    <time>1378139002708</time>
+    <time>1378139642277</time>
     <timezone>Europe/Berlin</timezone>
   </lastExecute>
   <regexOk>0</regexOk>
