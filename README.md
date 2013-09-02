@@ -20,13 +20,13 @@ Download the latest release from [github project page](http://christianklisch.gi
 
 ### Start KServerControl
 
-Switch to your install directory 'servercontrol'. Start from commandline with:
+Switch to your install directory 'kservercontrol'. Start from commandline with:
 ```
 # Linux
-$ sh ./bin/servercontrol
+$ sh ./bin/kservercontrol
 
 # Windows:
-> .\bin\servercontrol.bat
+> .\bin\kservercontrol.bat
 
 ```
 
@@ -39,27 +39,27 @@ $ mvn clean validate package appassembler:assemble
 ```
 
 
-### Start ServerControl
+### Start KServerControl
 
 After assembling sourcecode you have to copy the 'config' and the 'xml' directories to target/appassembler/bin/. After copy you can start the tool with commandline:
 
 ```
 # Linux
-$ sh target/appassembler/bin/servercontrol
+$ sh target/appassembler/bin/kservercontrol
 
 # Windows:
-> target\appassembler\bin\servercontrol.bat
+> target\appassembler\bin\kservercontrol.bat
 
 ```
 
 ## Configuration
 
-### Tool ServerControl in config.properties
+### Tool KServerControl in config.properties
 
 You'll find the tool configuration in file './bin/config/config.properties' with parameters:
 * port = TCP-Port of webserver for controlling server and services (e.g. 8080)
 * idle_time = Pause between service checks in ms (e.g. 5000 ms)
-* xml_path = Path to your XML-files with task configurations (e.g. ./xml/ or /nas/servercontrol/xml/)
+* xml_path = Path to your XML-files with task configurations (e.g. ./xml/ or /nas/kservercontrol/xml/)
 
 ### Task configuration in XML-file
 
@@ -98,8 +98,8 @@ Description of the tags:
 * id = first part of filename without extension, must be the same name
 * description = Description of the task
 * command = Command or small skript to execute
-* lastResult = last commandresult, set by ServerControl
-* lastExecute = last timestamp of execution, set by ServerControl
+* lastResult = last commandresult, set by KServerControl
+* lastExecute = last timestamp of execution, set by KServerControl
 * regexOK = regular expression to check for for correct execution result (lastResult)
 * regexWarn = regular expression to check for for warning execution result (lastResult)
 * targetOS = system, where to run script (Windows / Linux)
@@ -136,8 +136,8 @@ Description of the tags:
 * id = first part of filename without extension, must be the same name
 * description = Description of the task
 * command = Command or small skript to execute
-* lastResult = last commandresult, set by ServerControl
-* lastExecute = last timestamp of execution, set by ServerControl
+* lastResult = last commandresult, set by KServerControl
+* lastExecute = last timestamp of execution, set by KServerControl
 * regexOK = regular expression to check for for correct execution result (lastResult)
 * regexWarn = regular expression to check for for warning execution result (lastResult)
 * targetOS = system, where to run script (Windows / Linux)
@@ -196,8 +196,8 @@ Description of the tags:
 * id = first part of filename without extension, must be the same name
 * description = Description of the SQL
 * command = SQL select-command to execute
-* lastResult = last sql-result, set by ServerControl
-* lastExecute = last timestamp of execution, set by ServerControl
+* lastResult = last sql-result, set by KServerControl
+* lastExecute = last timestamp of execution, set by KServerControl
 * regexOK = regular expression to check for for correct execution result (lastResult)
 * regexWarn = regular expression to check for for warning execution result (lastResult)
 * databaseType = Kind of DB: (MySQL, Oracle, Postgre, H2)
@@ -240,8 +240,8 @@ Description of the tags:
 * id = first part of filename without extension, must be the same name
 * description = Description of the SQL
 * command = SQL execute-command to execute
-* lastResult = last sql-result, set by ServerControl
-* lastExecute = last timestamp of execution, set by ServerControl
+* lastResult = last sql-result, set by KServerControl
+* lastExecute = last timestamp of execution, set by KServerControl
 * regexOK = regular expression to check for for correct execution result (lastResult)
 * regexWarn = regular expression to check for for warning execution result (lastResult)
 * databaseType = Kind of DB: (MySQL, Oracle, Postgre, H2)
