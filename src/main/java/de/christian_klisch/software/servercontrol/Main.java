@@ -67,4 +67,8 @@ public class Main implements Configuration {
 	server.start();
 	server.join();
     }
+    
+    public void stop() throws Exception{
+	server.stop();
+    }
 }

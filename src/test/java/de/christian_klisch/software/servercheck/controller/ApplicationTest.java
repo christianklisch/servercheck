@@ -11,7 +11,6 @@ import org.junit.Test;
 import de.christian_klisch.software.servercontrol.controller.Application;
 import de.christian_klisch.software.servercontrol.model.Command;
 import de.christian_klisch.software.servercontrol.model.CommandView;
-import de.christian_klisch.software.servercontrol.model.Process;
 import de.christian_klisch.software.servercontrol.model.Task;
 
 /**
@@ -59,7 +58,7 @@ public class ApplicationTest extends TestCase {
 	}
 
 	//if (SystemUtils.IS_OS_LINUX) {
-	if (2 < 1) {	    
+	if (2*50 < 1) {	    
 	    t.setCommand("echo 123");
 	    t.setDescription("Skript returning value 0 LIN-ONLY");
 	    t.setId("r0");

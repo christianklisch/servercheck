@@ -1,11 +1,10 @@
 <sqlView>
   <filename>s1.xml</filename>
   <id>s1</id>
-  <description>select a count of entries of an MySQL DB table</description>
   <command>SELECT COUNT(*) FROM actions</command>
   <lastResult>12</lastResult>
   <lastExecute>
-    <time>1377100699794</time>
+    <time>1378139002660</time>
     <timezone>Europe/Berlin</timezone>
   </lastExecute>
   <databaseType>MySQL</databaseType>

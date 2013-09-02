@@ -118,9 +118,49 @@ public abstract class Task {
 	return image;
     }
 
-    public String getTimeString() {
+    public String getRequestButton() {
+	String button = "";
+
+	if (this instanceof ProcessExec) {
+	    button = "<div class=\"btn-group\"><form method=\"post\"><input type=\"hidden\" name=\"process\" value=\"" + this.getId()
+		    + "\"/><button class=\"btn\"><i class=\"icon-play\"></i></button></form></div>";
+	}
+	if (this instanceof ProcessView) {
+	    button = "<div class=\"btn-group\"><form method=\"post\"><input type=\"hidden\" name=\"process\" value=\"" + this.getId()
+		    + "\"/><button class=\"btn\"><i class=\"icon-refresh\"></i></button></form></div>";
+	}
+
+	return button;
+    }
+
+    public String getTimeStampString() {
 	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
 	return df.format(lastExecute.getTime());
     }
+
+    public String getDateString() {
+	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+	return df.format(lastExecute.getTime());
+    }
+
+    public String getTimeString() {
+	SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss.S");
+	return df.format(lastExecute.getTime());
+    }
+    
+    public String toString() {
+	String t = "			    <dl>" +
+                        "			    	<dt>ID</dt>" +
+                        "			    	<dd>"+ this.id +"</dd>" +
+                        "			    	<dt>Description</dt>" +
+                        "			    	<dd>"+ this.description+"</dd>	" +
+                        "			    	<dt>Last Check</dt>" +
+                        "			    	<dd>"+this.getTimeString()+"</dd>" +		
+                        "			    	<dt>Last Result</dt>" +
+                        "			    	<dd>" + this.getStatusImage() + " " + this.lastResult+"</dd>" +				    				    			    	
+                        "		   </dl>"+
+                        "		   " + this.getRequestButton();
+	return t;
+    }        
 
 }

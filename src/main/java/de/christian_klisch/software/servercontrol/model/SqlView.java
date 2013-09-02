@@ -21,25 +21,5 @@ package de.christian_klisch.software.servercontrol.model;
  *         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 public class SqlView extends Sql implements ProcessView {
-    
-    public String toString() {
-	
-	String t = "			    <dl>" +
-                        "			    	<dt>ID</dt>" +
-                        "			    	<dd>"+ this.id +"</dd>" +
-                        "			    	<dt>Description</dt>" +
-                        "			    	<dd>"+ this.description+"</dd>	" +
-                        "			    	<dt>Last Check</dt>" +
-                        "			    	<dd>"+this.getTimeString()+"</dd>" +		
-                        "			    	<dt>Last Result</dt>" +
-                        "			    	<dd>" + this.getStatusImage() + " " + this.lastResult+"</dd>" +				    				    			    	
-                        "			    </dl>"+
-                        "			    " +
-                        "			    <div class=\"btn-group\">" +
-                        "				    <!--<button class=\"btn\"><i class=\"icon-refresh\"></i></button>-->" +
-                        "				    <form method=\"post\">" +                        
-                        "				    <input type=\"hidden\" name=\"process\" value=\"" + this.getId() + "\"/><button class=\"btn\"><i class=\"icon-play\"></i></button></form>" +                        
-                        "			    </div>";
-	return t;
-    }
+
 }

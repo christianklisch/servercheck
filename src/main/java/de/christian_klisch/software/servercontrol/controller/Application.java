@@ -22,7 +22,6 @@ import de.christian_klisch.software.servercontrol.config.Configuration;
 import de.christian_klisch.software.servercontrol.model.Command;
 import de.christian_klisch.software.servercontrol.model.CommandExec;
 import de.christian_klisch.software.servercontrol.model.CommandView;
-import de.christian_klisch.software.servercontrol.model.Process;
 import de.christian_klisch.software.servercontrol.model.ProcessExec;
 import de.christian_klisch.software.servercontrol.model.ProcessView;
 import de.christian_klisch.software.servercontrol.model.SqlExec;

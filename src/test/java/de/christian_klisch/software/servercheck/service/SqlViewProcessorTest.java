@@ -1,20 +1,11 @@
 package de.christian_klisch.software.servercheck.service;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
-import org.h2.tools.Server;
-import org.junit.Before;
-import org.junit.Test;
-
+import junit.framework.TestCase;
 import de.christian_klisch.software.servercontrol.controller.Application;
 import de.christian_klisch.software.servercontrol.model.Sql;
 import de.christian_klisch.software.servercontrol.model.SqlView;
 import de.christian_klisch.software.servercontrol.service.ProcessorIF;
 import de.christian_klisch.software.servercontrol.service.impl.SqlViewProcessor;
-
-import junit.framework.TestCase;
 
 /**
  * JUnit Test.
@@ -50,12 +41,16 @@ public class SqlViewProcessorTest extends TestCase  {
 	sql.setDbuser("root");
 	sql.setDbpassword("");
 	
+	sql.setId("s1");
+	sql.setFilename("s1.xml");
+	
 	ProcessorIF processor = new SqlViewProcessor();
 	processor.execute(sql);
 	
-	System.out.println(sql.getLastExecute());
-	System.out.println(sql.getLastResult());
-	
+	assertNotNull(sql.getLastExecute());
+	assertNotNull(sql.getLastResult());
+	assertTrue(sql.getStatusImage().indexOf("important") > 0);
+	assertTrue(sql.getRequestButton().indexOf("refresh") > 0);
 	
 	Application app = new Application();
 	app.saveTaskAsXML(sql);

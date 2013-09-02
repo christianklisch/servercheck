@@ -19,7 +19,6 @@ import org.apache.commons.io.IOUtils;
 import de.christian_klisch.software.servercontrol.config.Configuration;
 import de.christian_klisch.software.servercontrol.model.Command;
 import de.christian_klisch.software.servercontrol.model.CommandView;
-import de.christian_klisch.software.servercontrol.model.Process;
 import de.christian_klisch.software.servercontrol.model.Task;
 
 /**
@@ -43,7 +42,7 @@ import de.christian_klisch.software.servercontrol.model.Task;
  *         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 public class AbstractCommandProcessor implements Configuration {
-    
+
     protected void execute(Task task) {
 	Command v = (Command) task;
 	String returnvalue = "";
@@ -87,9 +86,9 @@ public class AbstractCommandProcessor implements Configuration {
 	v.setLastExecute(new GregorianCalendar());
 	v.setLastResult(returnvalue);
     }
-    
+
     protected String executeOnSSH(Command s, String scriptname) {
-	
+
 	String returnvalue = "";
 	ConnBean cb = new ConnBean(s.getSshserver(), s.getSshuser(), s.getSshpassword());
 	SSHExec ssh = SSHExec.getInstance(cb);

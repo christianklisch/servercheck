@@ -1,16 +1,16 @@
-# ServerControl
+# KServerControl
 
 Open Source tool to view server and service state and control server in your company created and maintained by Christian Klisch.
 
 ## Quick start
 
-There are two options to use ServerControl
+There are two options to use KServerControl
 
 * Download the latest release
 * Build from sourcecode
 
 Don't forget to configure
-* ServerControl configuration
+* KServerControl configuration
 * XML Tasks
 * Webinterface template
 
@@ -18,7 +18,7 @@ Don't forget to configure
 
 Download the latest release from [github project page](http://christianklisch.github.io/servercontrol). 
 
-### Start ServerControl
+### Start KServerControl
 
 Switch to your install directory 'servercontrol'. Start from commandline with:
 ```
@@ -66,6 +66,8 @@ You'll find the tool configuration in file './bin/config/config.properties' with
 In the xml-directory you can create a config for each task. There are different types of tasks:
 * View-command to execute a command to check a service
 * Execute-command to execute a command to control a service
+* View-SQL to execute a SELECT-SQL
+* Execute-SQL to run a SQL-Command
 
 #### View-command
 
@@ -253,7 +255,11 @@ Note: Oracle can only connect to instances and not to services.
 
 ### Webinterface template
 
-tbd
+The webinterface template is saved in './bin/config/template.xhtml'. You can use HTML-Tags with style-attributes to design you own overview. The layout is embedded into the [Bootstrap 2.3.2](http://getbootstrap.com/2.3.2/) div-class 'container' (look the markup for more details). To insert task information or control buttons use the [moustache](http://mustache.github.io/) syntax like in following examples.  
+
+### More Information
+
+Why is the first letter of KServerControl a 'K'? I added this letter for better SEO because of the generic tool name.
 
 ## Authors
 
@@ -264,4 +270,4 @@ tbd
 
 ## Copyright and license
 
-Copyright 2013 Christian Klsich, released under [the GPL](LICENSE).
+Copyright 2013 Christian Klisch, released under [the GPL](LICENSE).
