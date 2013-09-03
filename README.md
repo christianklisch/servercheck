@@ -32,7 +32,7 @@ $ sh ./bin/kservercontrol
 
 ## Build from sourcecode
 
-Clone sourcecode and rebuild the project:
+Clone sourcecode and rebuild the project with maven:
 
 ```
 $ mvn clean validate package appassembler:assemble
@@ -256,6 +256,45 @@ Note: Oracle can only connect to instances and not to services.
 ### Webinterface template
 
 The webinterface template is saved in './bin/config/template.xhtml'. You can use HTML-Tags with style-attributes to design you own overview. The layout is embedded into the [Bootstrap 2.3.2](http://getbootstrap.com/2.3.2/) div-class 'container' (look the markup for more details). To insert task information or control buttons use the [moustache](http://mustache.github.io/) syntax like in following examples.  
+
+You can design the template.xhtml for your needs. This markup will be included between the body-tags of the webinterface.
+With the mustache syntax you can put task information on the webinterface. The default view can be included like the task r0.xml (e.g. in a bootstrap div-tag):
+
+```
+			<div class="well well-small span5">
+			{{# views }}
+			  {{{ r0 }}}
+			{{/ views }}	
+			</div>	
+```
+
+You have to use the container 'views' with the tags '{{# views }}' and '{{/ views }}' around the area showing task information. The tag '{{{ r0 }}}' prints the default view on your webinterface.
+To customize the order or count of information call attributes of the task (e.g. r0):
+
+```
+			{{# views }}
+			  {{{ r0 }}}
+			  <p>The command: {{r0.command}}</p>
+			  <p>Last execution time: {{r0.timeString}}</p>
+			{{/ views }}	
+```
+
+You can access following task attributes like '{{r0.command}}' (task id + dot + attribute):
+* command
+* dateString (date only)
+* description
+* filename
+* id
+* lastExecute (GregorianCalendar Timestamp)
+* lastResult
+* regexOk
+* regexWarn
+* requestButton (shows button to refresh result or restart execution command)
+* statusImage (shows a red, yellow or green icon - matching regular expressions)
+* timeStampString (date and time)
+* timeString (time only)
+
+Be free to build own views with lists, tables, sections, tabs, ... For more syntax details read the manual and documentation of mustache and bootstrap. 
 
 ### More Information
 

@@ -4,7 +4,7 @@
   <command>SELECT COUNT(*) FROM actions</command>
   <lastResult>12</lastResult>
   <lastExecute>
-    <time>1378139572323</time>
+    <time>1378209218601</time>
     <timezone>Europe/Berlin</timezone>
   </lastExecute>
   <databaseType>MySQL</databaseType>

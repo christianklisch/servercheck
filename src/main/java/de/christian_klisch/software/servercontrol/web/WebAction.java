@@ -40,9 +40,7 @@ public class WebAction {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list(Model model) {
-	// System.out.println(application.toString());
-	// System.out.println(application.getRequestMap().size());
-	model.addAttribute("views", application.getAllViews());
+	//model.addAttribute("views", application.getAllViews());
 	model.addAttribute("template", application.getFilledTemplate());
 
 	return new ModelAndView("list");

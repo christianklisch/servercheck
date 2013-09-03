@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>ServerControl</title>
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="refresh" content="300" > 
+    <title>KServerControl</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <style type="text/css">
@@ -64,7 +66,7 @@
   <body>
   	<div class="container">
 	    <div class="page-header">
-	    	<h1>ServerControl <small>Open Source</small></h1>
+	    	<h1>KServerControl <small>Open Source</small></h1>
 	    </div>
 	   
 	    
