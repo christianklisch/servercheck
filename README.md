@@ -1,4 +1,4 @@
-# KServerControl
+# KServerControl [![Build Status](https://travis-ci.org/christianklisch/servercontrol.png?branch=master)](https://travis-ci.org/christianklisch/servercontrol)
 
 Open Source tool to view server and service state and control server in your company created and maintained by Christian Klisch.
 
