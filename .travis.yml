@@ -1,4 +1,4 @@
 language: java
 
 before_install:
-mvn install:install-file -DgroupId=net.neoremind.sshxcute -DartifactId=sshxcute -Dversion=1.0 -Dpackaging=jar -Dfile=./lib/sshxcute-1.0.jar -DgeneratePom=true
+- mvn install:install-file -DgroupId=net.neoremind.sshxcute -DartifactId=sshxcute -Dversion=1.0 -Dpackaging=jar -Dfile=./lib/sshxcute-1.0.jar -DgeneratePom=true
