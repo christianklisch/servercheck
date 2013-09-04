@@ -51,6 +51,18 @@ $ sh target/appassembler/bin/kservercontrol
 > target\appassembler\bin\kservercontrol.bat
 
 ```
+### Launch in Browser
+
+Open the webinterface on your server at URL: http://your-server:port/list
+
+### Launch via SOAP
+
+Access via SOAP at URL: http://your-server:port/SoapService?wsdl
+
+This webservice includes following methods:
+* getAllViews() - returns a list with common details to each view task
+* getTaskDetail(id) - returns details to specific task id (set string in parameter)
+
 
 ## Configuration
 

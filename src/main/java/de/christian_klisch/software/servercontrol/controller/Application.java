@@ -92,9 +92,9 @@ public class Application implements Configuration {
 
 	ProcessorIF p2 = new CommandExecProcessor();
 	processorMap.put(p2.getClassType(), p2);
-    
+
 	ProcessorIF p3 = new SqlViewProcessor();
-	processorMap.put(p3.getClassType(), p3);    
+	processorMap.put(p3.getClassType(), p3);
     }
 
     public String getTemplate() {
@@ -203,8 +203,12 @@ public class Application implements Configuration {
     }
 
     public void executeFromWeb(String key) {
+	this.executeProcess(readTaskFromMap(key));
+    }
+
+    public Task readTaskFromMap(String key) {
 	Task process = requestMap.get(key);
-	this.executeProcess(process);
+	return process;
     }
 
     public Map<String, Task> getAllViews() {

@@ -14,6 +14,7 @@
 		<jetty.version>9.0.4.v20130625</jetty.version>
 		<jetty.jsp.version>9.0.4.v20130625</jetty.jsp.version>
 		<spring.version>3.1.2.RELEASE</spring.version>
+		<spring-ws.version>2.1.3.RELEASE</spring-ws.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -31,6 +32,40 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+
+		<!-- SPRING Webservice -->
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-core</artifactId>
+			<version>${spring-ws.version}</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>jaxen</groupId>
+			<artifactId>jaxen</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<version>2.2.3</version>
+		</dependency> -->
+		<dependency>
+			<groupId>org.jvnet.jax-ws-commons.spring</groupId>
+			<artifactId>jaxws-spring</artifactId>
+			<version>1.9</version>
+			<exclusions>
+				<exclusion>  <!-- declare the exclusion here -->
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
 
 		<!-- @Inject -->
 		<dependency>
@@ -168,8 +203,20 @@
 			<id>codelds</id>
 			<url>https://code.lds.org/nexus/content/groups/main-repo</url>
 		</repository>
+		<repository>
+			<id>java.net2</id>
+			<name>Repository hosting the jee6 artifacts</name>
+			<url>http://download.java.net/maven/2</url>
+		</repository>
 	</repositories>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>java.net2</id>
+			<name>Repository hosting the jee6 artifacts</name>
+			<url>http://download.java.net/maven/2</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<build>
 		<!-- To define the plugin version in your parent POM -->
@@ -185,31 +232,14 @@
 		</pluginManagement>
 
 		<plugins>
-		<!-- 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-install-plugin</artifactId>
-				<version>2.4</version>
-				<executions>
-					<execution>
-						<id>hack-binary</id>
-						<phase>validate</phase>
-						<configuration>
-							<file>${project.basedir}/lib/sshxcute-1.0.jar</file>
-							<repositoryLayout>default</repositoryLayout>
-							<groupId>net.neoremind.sshxcute</groupId>
-							<artifactId>sshxcute</artifactId>
-							<version>1.0</version>
-							<packaging>jar</packaging>
-							<generatePom>true</generatePom>
-						</configuration>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
- -->
+			<!-- for local build / travis config in .travis.yml <plugin> <groupId>org.apache.maven.plugins</groupId> 
+				<artifactId>maven-install-plugin</artifactId> <version>2.4</version> <executions> 
+				<execution> <id>hack-binary</id> <phase>validate</phase> <configuration> 
+				<file>${project.basedir}/lib/sshxcute-1.0.jar</file> <repositoryLayout>default</repositoryLayout> 
+				<groupId>net.neoremind.sshxcute</groupId> <artifactId>sshxcute</artifactId> 
+				<version>1.0</version> <packaging>jar</packaging> <generatePom>true</generatePom> 
+				</configuration> <goals> <goal>install-file</goal> </goals> </execution> 
+				</executions> </plugin> -->
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>

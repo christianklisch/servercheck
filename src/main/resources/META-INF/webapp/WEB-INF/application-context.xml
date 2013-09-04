@@ -3,9 +3,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:wss="http://jax-ws.dev.java.net/spring/servlet"
+	xmlns:ws="http://jax-ws.dev.java.net/spring/core"	
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">	
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	    http://jax-ws.dev.java.net/spring/core
+        http://jax-ws.dev.java.net/spring/core.xsd
+        http://jax-ws.dev.java.net/spring/servlet
+        http://jax-ws.dev.java.net/spring/servlet.xsd">	
 	
   <!-- Define your application beans here. They will be available to the
        beans defined in your web-context because it is a sub-context.
@@ -20,5 +26,18 @@
 	<bean id="app" class="de.christian_klisch.software.servercontrol.controller.Application" />   	
 	<bean id="jobrunner"   class="de.christian_klisch.software.servercontrol.job.JobRunner"/>
 	  	
+	  	
+	<!-- WS -->
+
+    <wss:binding url="/SoapService">
+        <wss:service>
+            <ws:service bean="#soapServiceWs"/>
+        </wss:service>
+    </wss:binding>
+
+    <!-- Web service methods -->
+    <bean id="soapServiceWs" class="de.christian_klisch.software.servercontrol.webservice.impl.SoapServiceImpl">
+    	<property name="application" ref="app" />
+    </bean>
 	
 </beans>

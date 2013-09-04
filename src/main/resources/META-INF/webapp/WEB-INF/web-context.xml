@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
     <!-- Scans the classpath of the application for @Components to deploy as beans -->	
-	<context:component-scan base-package="de.christian_klisch.software.servercontrol.web" />    
+	<context:component-scan base-package="de.christian_klisch.software.servercontrol" />    
 
 	<!-- Configures the @Controller programming model -->
 	<mvc:annotation-driven/>    
