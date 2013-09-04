@@ -56,5 +56,10 @@ public class WebServerTest  extends TestCase implements Configuration {
 
 	assertEquals(response.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
     }
+    
+    public void testTruetest()
+    {
+	assertTrue(true);
+    }
 
 }
