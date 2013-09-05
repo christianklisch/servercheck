@@ -20,24 +20,22 @@
        context.
   -->
    
-
-
 	<!-- App Beans  scope="globalSession" -->
-	<bean id="app" class="de.christian_klisch.software.servercontrol.controller.Application" />   	
+	<bean id="application" class="de.christian_klisch.software.servercontrol.controller.Application" />   	
 	<bean id="jobrunner"   class="de.christian_klisch.software.servercontrol.job.JobRunner"/>
 	  	
 	  	
 	<!-- WS -->
-
     <wss:binding url="/SoapService">
         <wss:service>
             <ws:service bean="#soapServiceWs"/>
+           <!--   <ws:service bean="#soapServiceWs"/> -->
         </wss:service>
     </wss:binding>
 
     <!-- Web service methods -->
     <bean id="soapServiceWs" class="de.christian_klisch.software.servercontrol.webservice.impl.SoapServiceImpl">
-    	<property name="application" ref="app" />
+    	  <property name="application" ref="application" />
     </bean>
 	
 </beans>

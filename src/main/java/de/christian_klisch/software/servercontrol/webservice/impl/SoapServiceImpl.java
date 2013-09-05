@@ -1,6 +1,5 @@
 package de.christian_klisch.software.servercontrol.webservice.impl;
 
-import javax.inject.Inject;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -37,7 +36,6 @@ import de.christian_klisch.software.servercontrol.webservice.SoapServiceIF;
 @WebService(serviceName = "soapService")
 public class SoapServiceImpl extends SpringBeanAutowiringSupport implements SoapServiceIF {
 
-    @Inject
     Application application;
 
     @WebMethod

@@ -1,6 +1,6 @@
 # KServerControl [![Build Status](https://travis-ci.org/christianklisch/servercontrol.png?branch=master)](https://travis-ci.org/christianklisch/servercontrol)
 
-Open Source tool to view server and service state and control server in your company created and maintained by Christian Klisch.
+Open Source tool to view server and service state and control and monitor server in your company created and maintained by Christian Klisch.
 
 ## Quick start
 
@@ -13,6 +13,11 @@ Don't forget to configure
 * KServerControl configuration
 * XML Tasks
 * Webinterface template
+
+Who use it?
+* Serveradministrator/Operator - Install tool and configure tasks monitoring server and processes
+* Serveradministrator/Operator - View server and service status / control services
+* User/Department - View process status / control processes
 
 ## Download and Installation
 
@@ -61,7 +66,7 @@ Access via SOAP at URL: http://your-server:port/SoapService?wsdl
 
 This webservice includes following methods:
 * getAllViews() - returns a list with common details to each view task
-* getTaskDetail(id) - returns details to specific task id (set string in parameter)
+* getTaskDetail(id) - returns details to specific task id (set id as string in parameter)
 
 
 ## Configuration
@@ -174,7 +179,7 @@ Description of the tags:
 * sshpassword = password for sshuser
 * sshdirectory = directory for execution of given command
 
-The command of the command-tag will be copied via ssh to the remote system and execute on it. The command result will be saved in the attribute 'lastResult'.
+The command of the command-tag will be copied via ssh to the remote system and execute on it. The command result will be saved in the attribute 'lastResult'. Only Linux remote systems supported.
 
 
 #### View SQL
@@ -311,6 +316,20 @@ Be free to build own views with lists, tables, sections, tabs, ... For more synt
 ### More Information
 
 Why is the first letter of KServerControl a 'K'? I added this letter for better SEO because of the generic tool name.
+
+## Roadmap
+
+Version 0.1
+* XML configuration
+* Database tasks
+* Commandline tasks
+* Commandline via SSH
+
+Version 0.2 (not ready)
+* Request task status via SOAP
+* Add user-parameter for execution task commands
+* Add Ajax support
+* Add parallel processing of Commandline tasks
 
 ## Authors
 

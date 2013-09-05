@@ -19,6 +19,24 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
+	<licenses>
+		<license>
+			<name>GNU GENERAL PUBLIC LICENSE, Version 2.0</name>
+			<url>http://www.gnu.org/licenses/gpl-2.0.html#SEC1</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>christianklisch</id>
+			<name>Christian Klisch</name>
+			<url>http://www.christian-klisch.de</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+
 	<dependencies>
 
 		<!-- SPRING DEPENDENCIES -->
@@ -39,21 +57,11 @@
 			<artifactId>spring-ws-core</artifactId>
 			<version>${spring-ws.version}</version>
 		</dependency>
-		<!-- <dependency>
-			<groupId>jdom</groupId>
-			<artifactId>jdom</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>jaxen</groupId>
-			<artifactId>jaxen</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.xml.ws</groupId>
-			<artifactId>jaxws-rt</artifactId>
-			<version>2.2.3</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>jdom</groupId> <artifactId>jdom</artifactId> 
+			<version>1.0</version> </dependency> <dependency> <groupId>jaxen</groupId> 
+			<artifactId>jaxen</artifactId> <version>1.1</version> </dependency> <dependency> 
+			<groupId>com.sun.xml.ws</groupId> <artifactId>jaxws-rt</artifactId> <version>2.2.3</version> 
+			</dependency> -->
 		<dependency>
 			<groupId>org.jvnet.jax-ws-commons.spring</groupId>
 			<artifactId>jaxws-spring</artifactId>
@@ -217,6 +225,15 @@
 			<url>http://download.java.net/maven/2</url>
 		</pluginRepository>
 	</pluginRepositories>
+
+	<url>http://christianklisch.github.io/servercontrol</url>
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/christianklisch/servercontrol/issues</url>
+	</issueManagement>
+	<organization>
+		<name>Christian Klisch</name>
+	</organization>
 
 	<build>
 		<!-- To define the plugin version in your parent POM -->

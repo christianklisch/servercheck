@@ -123,7 +123,24 @@ public abstract class Task {
 
 	if (this instanceof ProcessExec) {
 	    button = "<div class=\"btn-group\"><form method=\"post\"><input type=\"hidden\" name=\"process\" value=\"" + this.getId()
-		    + "\"/><button class=\"btn\"><i class=\"icon-play\"></i></button></form></div>";
+		    + "\"/><button class=\"btn\"><i class=\"icon-play\"></i></button></form>" +
+		    "<a href=\"#modal"+this.id+"\" role=\"button\" class=\"btn\" data-toggle=\"modal\">Launch demo modal</a></div>";
+	    
+	    /*
+	    button = button + "    <div id=\"modal"+this.id+"\" class=\"modal hide fade\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
+    "<div class=\"modal-header\">"+
+    "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>"+
+    "<h3>Modal header</h3>"+
+    "</div>"+
+    "<div class=\"modal-body\">"+
+    "<p>One fine body…</p>"+
+    "</div>"+
+    "<div class=\"modal-footer\">"+
+    "<a href=\"#\" class=\"btn\">Close</a>"+
+    "<a href=\"#\" class=\"btn btn-primary\">Save changes</a>"+
+    "</div>"+
+    "</div>";*/
+	    
 	}
 	if (this instanceof ProcessView) {
 	    button = "<div class=\"btn-group\"><form method=\"post\"><input type=\"hidden\" name=\"process\" value=\"" + this.getId()

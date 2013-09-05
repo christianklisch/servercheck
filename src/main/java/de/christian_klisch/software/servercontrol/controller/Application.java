@@ -30,6 +30,7 @@ import de.christian_klisch.software.servercontrol.model.Task;
 import de.christian_klisch.software.servercontrol.service.ProcessorIF;
 import de.christian_klisch.software.servercontrol.service.impl.CommandExecProcessor;
 import de.christian_klisch.software.servercontrol.service.impl.CommandViewProcessor;
+import de.christian_klisch.software.servercontrol.service.impl.SqlExecProcessor;
 import de.christian_klisch.software.servercontrol.service.impl.SqlViewProcessor;
 
 /**
@@ -52,7 +53,7 @@ import de.christian_klisch.software.servercontrol.service.impl.SqlViewProcessor;
  *         along with this program; if not, write to the Free Software
  *         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
-@Controller("app")
+@Controller("application")
 public class Application implements Configuration {
 
     private static String xmlPath = "./xml/";
@@ -95,6 +96,9 @@ public class Application implements Configuration {
 
 	ProcessorIF p3 = new SqlViewProcessor();
 	processorMap.put(p3.getClassType(), p3);
+
+	ProcessorIF p4 = new SqlExecProcessor();
+	processorMap.put(p4.getClassType(), p4);
     }
 
     public String getTemplate() {

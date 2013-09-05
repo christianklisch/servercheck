@@ -2,6 +2,7 @@ package de.christian_klisch.software.servercontrol.service.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import net.neoremind.sshxcute.core.ConnBean;
@@ -46,24 +47,27 @@ public class AbstractCommandProcessor implements Configuration {
     protected void execute(Task task) {
 	Command v = (Command) task;
 	String returnvalue = "";
+	long timestamp = new Date().getTime();
 
 	try {
 	    java.lang.Process p = null;
 	    if (((CommandView) v).getTargetOS().equals(LINOS)) {
-		FileUtils.writeStringToFile(new File(SCRIPTDIR + SCRIPTFILELIN), v.getCommand());
+		FileUtils.writeStringToFile(new File(SCRIPTDIR + timestamp + SCRIPTFILELIN), v.getCommand());
 		if (((CommandView) v).getSshserver() != null && !((CommandView) v).getSshserver().isEmpty()) {
-		    returnvalue = this.executeOnSSH((Command) v, SCRIPTFILELIN);
+		    returnvalue = this.executeOnSSH((Command) v, timestamp + SCRIPTFILELIN);
 		} else {
-		    Runtime.getRuntime().exec("chmod 775 " + SCRIPTDIR + SCRIPTFILELIN);
-		    p = Runtime.getRuntime().exec(SCRIPTDIR + SCRIPTFILELIN);
+		    Runtime.getRuntime().exec("chmod 775 " + SCRIPTDIR + timestamp + SCRIPTFILELIN);
+		    p = Runtime.getRuntime().exec(SCRIPTDIR + timestamp + SCRIPTFILELIN);
+		    new File(SCRIPTDIR + timestamp + SCRIPTFILELIN).delete();
 		}
 	    }
 	    if (((CommandView) v).getTargetOS().equals(WINOS)) {
-		FileUtils.writeStringToFile(new File(SCRIPTDIR + SCRIPTFILEWIN), v.getCommand());
+		FileUtils.writeStringToFile(new File(SCRIPTDIR + timestamp + SCRIPTFILEWIN), v.getCommand());
 		if (((CommandView) v).getSshserver() != null && !((CommandView) v).getSshserver().isEmpty()) {
-		    returnvalue = this.executeOnSSH((Command) v, SCRIPTFILEWIN);
+		    returnvalue = this.executeOnSSH((Command) v, timestamp + SCRIPTFILEWIN);
 		} else {
-		    p = Runtime.getRuntime().exec(SCRIPTDIR + SCRIPTFILEWIN);
+		    p = Runtime.getRuntime().exec(SCRIPTDIR + timestamp + SCRIPTFILEWIN);
+		    new File(SCRIPTDIR + timestamp + SCRIPTFILEWIN).delete();
 		}
 	    }
 	    if (p != null) {
@@ -79,6 +83,8 @@ public class AbstractCommandProcessor implements Configuration {
 
 	    }
 
+	    System.out.println(returnvalue);
+	    
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
