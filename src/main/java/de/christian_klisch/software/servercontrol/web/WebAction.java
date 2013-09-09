@@ -1,5 +1,7 @@
 package de.christian_klisch.software.servercontrol.web;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -7,9 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.christian_klisch.software.servercontrol.controller.Application;
+import de.christian_klisch.software.servercontrol.model.Task;
 
 /**
  * Webcontroller to show tasks state and execute tasks selected in web
@@ -40,9 +44,7 @@ public class WebAction {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list(Model model) {
-	//model.addAttribute("views", application.getAllViews());
 	model.addAttribute("template", application.getFilledTemplate());
-
 	return new ModelAndView("list");
     }
 
@@ -51,7 +53,15 @@ public class WebAction {
 	System.out.println("redirect " + process);
 
 	application.executeFromWeb(process);
-
 	return "redirect:/list";
+    }
+
+    @RequestMapping(value = "/json", method = RequestMethod.GET)
+    public @ResponseBody
+    Object[] getJSON(@RequestParam(value = "process", required = false) String process) {
+	Map<String, Task> map = application.getAllProcesses();
+	if (map != null)
+	    return map.values().toArray();
+	return null;
     }
 }

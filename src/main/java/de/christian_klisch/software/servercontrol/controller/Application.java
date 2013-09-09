@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.stereotype.Controller;
 
 import com.github.mustachejava.DefaultMustacheFactory;
@@ -127,6 +128,7 @@ public class Application implements Configuration {
 	    task.setFilename(task.getId() + FILETYPE);
 
 	String xml = xstream.toXML(task);
+	xml = StringEscapeUtils.unescapeXml(xml);
 
 	try {
 	    FileUtils.writeStringToFile(new File(xmlPath + task.getFilename()), xml);

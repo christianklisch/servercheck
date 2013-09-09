@@ -45,7 +45,7 @@ public class ApplicationTest extends TestCase {
 	//if (SystemUtils.IS_OS_WINDOWS) {
 	if (true) {
 	    t.setCommand("@echo off\necho 0");
-	    t.setDescription("Skript returning value 0 WIN-ONLY");
+	    t.setDescription("Skript returning value 0 WIN-ONLY ' ' 'ffd // ");
 	    t.setId("r0");
 	    t.setLastExecute(new GregorianCalendar());
 	    t.setLastResult("1");

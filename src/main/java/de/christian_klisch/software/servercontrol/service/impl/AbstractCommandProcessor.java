@@ -58,6 +58,7 @@ public class AbstractCommandProcessor implements Configuration {
 		} else {
 		    Runtime.getRuntime().exec("chmod 775 " + SCRIPTDIR + timestamp + SCRIPTFILELIN);
 		    p = Runtime.getRuntime().exec(SCRIPTDIR + timestamp + SCRIPTFILELIN);
+		    p.waitFor();
 		    new File(SCRIPTDIR + timestamp + SCRIPTFILELIN).delete();
 		}
 	    }
@@ -67,9 +68,11 @@ public class AbstractCommandProcessor implements Configuration {
 		    returnvalue = this.executeOnSSH((Command) v, timestamp + SCRIPTFILEWIN);
 		} else {
 		    p = Runtime.getRuntime().exec(SCRIPTDIR + timestamp + SCRIPTFILEWIN);
+		    p.waitFor();
 		    new File(SCRIPTDIR + timestamp + SCRIPTFILEWIN).delete();
 		}
 	    }
+	    
 	    if (p != null) {
 		returnvalue = IOUtils.toString(p.getInputStream(), "UTF-8");
 		if (returnvalue != null) {
@@ -80,12 +83,11 @@ public class AbstractCommandProcessor implements Configuration {
 	    if (returnvalue != null && !returnvalue.isEmpty()) {
 		returnvalue = returnvalue.trim();
 		returnvalue = returnvalue.replaceAll("[\\r\\n]", "");
-
 	    }
-
-	    System.out.println(returnvalue);
 	    
 	} catch (IOException e) {
+	    e.printStackTrace();
+	} catch (InterruptedException e) {
 	    e.printStackTrace();
 	}
 

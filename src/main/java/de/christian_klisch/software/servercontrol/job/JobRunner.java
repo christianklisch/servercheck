@@ -36,8 +36,6 @@ public class JobRunner extends Thread implements Runnable {
 		app.copyTasksInMap(app.readTaskFromXML());
 		app.removeDeletedTasks();
 		app.executeAll();
-
-		System.out.println("läuft" + System.currentTimeMillis());
 	    }
 	} catch (InterruptedException e) {
 	    e.printStackTrace();

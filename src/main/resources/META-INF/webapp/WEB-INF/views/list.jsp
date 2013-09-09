@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/jquery.form.js"></script>
+	<script src="js/kservercontrol.js"></script>
     <style type="text/css">
 
       /* Sticky footer styles
@@ -80,6 +82,18 @@
 
 
     </div> 
+    
+<script type="text/javascript">
+$(document).ready(function() {
+		$('.taskform').ajaxForm({
+			success : function() {
+				alert("Send");
+			}
+		});
+	});
+</script>    
+    
+    
     <div id="footer">
       <div class="container">
          <p class="muted credit">Open Source ServerControl by <a href="http://www.christian-klisch.de">Christian Klisch</a>. Check for Updates on <a href="http://christianklisch.github.io/servercontrol">Github</a>.</p>

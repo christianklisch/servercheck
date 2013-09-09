@@ -25,7 +25,7 @@ Download the latest release from [github project page](http://christianklisch.gi
 
 ### Start KServerControl
 
-Switch to your install directory 'kservercontrol'. Start from commandline with:
+Switch to your install directory 'kservercontrol'. Start from commandline with (first make linux executeable with: chmod 775 ./bin/kservercontrol):
 ```
 # Linux
 $ sh ./bin/kservercontrol
@@ -333,9 +333,9 @@ Version 0.2 (not ready)
 
 ## Authors
 
-**Christian Klisch**
+**Christian Klisch - [Homepage](http://www.christian-klisch.de)**
 
-+ [http://github.com/christianklisch](http://github.com/christianklisch)
++ [http://github.com/christianklisch](http://github.com/christianklisch) 
 
 
 ## Copyright and license

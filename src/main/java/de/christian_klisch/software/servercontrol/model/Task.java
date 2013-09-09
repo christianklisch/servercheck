@@ -122,11 +122,11 @@ public abstract class Task {
 	String button = "";
 
 	if (this instanceof ProcessExec) {
-	    button = "<div class=\"btn-group\"><form method=\"post\"><input type=\"hidden\" name=\"process\" value=\"" + this.getId()
-		    + "\"/><button class=\"btn\"><i class=\"icon-play\"></i></button></form>" +
+	    button = "<div class=\"btn-group\"><form method=\"post\" class=\"taskform\"><input type=\"hidden\" name=\"process\" value=\"" + this.getId()
+		    + "\">"+this.getId()+"</input><button class=\"btn task\" type=\"submit\"><i class=\"icon-play\"></i></button></form>" +
 		    "<a href=\"#modal"+this.id+"\" role=\"button\" class=\"btn\" data-toggle=\"modal\">Launch demo modal</a></div>";
 	    
-	    /*
+	    /* 
 	    button = button + "    <div id=\"modal"+this.id+"\" class=\"modal hide fade\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
     "<div class=\"modal-header\">"+
     "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>"+
@@ -143,8 +143,8 @@ public abstract class Task {
 	    
 	}
 	if (this instanceof ProcessView) {
-	    button = "<div class=\"btn-group\"><form method=\"post\"><input type=\"hidden\" name=\"process\" value=\"" + this.getId()
-		    + "\"/><button class=\"btn\"><i class=\"icon-refresh\"></i></button></form></div>";
+	    button = "<div class=\"btn-group\"><form method=\"post\" class=\"taskform\"><input type=\"hidden\" name=\"process\" value=\"" + this.getId()
+		    + "\"/><button class=\"btn task\" type=\"submit\"><i class=\"icon-refresh\"></i></button></form></div>";
 	}
 
 	return button;
