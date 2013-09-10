@@ -1,6 +1,6 @@
 package de.christian_klisch.software.servercontrol.webservice;
 
-import de.christian_klisch.software.servercontrol.model.Task;
+import de.christian_klisch.software.servercontrol.model.InfoTask;
 
 /**
  * Soap Webservice Interface
@@ -24,7 +24,7 @@ import de.christian_klisch.software.servercontrol.model.Task;
  */
 public interface SoapServiceIF {
 
-    public Task getTaskDetail(String id);
+    public InfoTask getTaskDetail(String id);
 
     public Object[] getAllViews();
 }

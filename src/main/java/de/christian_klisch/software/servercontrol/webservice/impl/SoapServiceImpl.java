@@ -9,7 +9,8 @@ import javax.xml.bind.annotation.XmlElement;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import de.christian_klisch.software.servercontrol.controller.Application;
-import de.christian_klisch.software.servercontrol.model.Task;
+import de.christian_klisch.software.servercontrol.model.InfoTask;
+import de.christian_klisch.software.servercontrol.util.ModelUtil;
 import de.christian_klisch.software.servercontrol.webservice.SoapServiceIF;
 
 /**
@@ -40,14 +41,14 @@ public class SoapServiceImpl extends SpringBeanAutowiringSupport implements Soap
 
     @WebMethod
     @WebResult(name = "task")
-    public Task getTaskDetail(@XmlElement(required = true) @WebParam(name = "id") String id) {
-	return application.readTaskFromMap(id);
+    public InfoTask getTaskDetail(@XmlElement(required = true) @WebParam(name = "id") String id) {
+	return ModelUtil.convert2InfoTask(application.readTaskFromMap(id));
     }
 
     @WebMethod
     @WebResult(name = "tasks")
     public Object[] getAllViews() {
-	return application.getAllViews().values().toArray();
+	return ModelUtil.convert2InfoTask(application.getAllViews().values().toArray());
     }
 
     @WebMethod(exclude = true)

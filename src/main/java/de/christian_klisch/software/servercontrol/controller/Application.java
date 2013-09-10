@@ -23,6 +23,7 @@ import de.christian_klisch.software.servercontrol.config.Configuration;
 import de.christian_klisch.software.servercontrol.model.Command;
 import de.christian_klisch.software.servercontrol.model.CommandExec;
 import de.christian_klisch.software.servercontrol.model.CommandView;
+import de.christian_klisch.software.servercontrol.model.InfoTask;
 import de.christian_klisch.software.servercontrol.model.ProcessExec;
 import de.christian_klisch.software.servercontrol.model.ProcessView;
 import de.christian_klisch.software.servercontrol.model.SqlExec;
@@ -33,6 +34,7 @@ import de.christian_klisch.software.servercontrol.service.impl.CommandExecProces
 import de.christian_klisch.software.servercontrol.service.impl.CommandViewProcessor;
 import de.christian_klisch.software.servercontrol.service.impl.SqlExecProcessor;
 import de.christian_klisch.software.servercontrol.service.impl.SqlViewProcessor;
+import de.christian_klisch.software.servercontrol.util.ModelUtil;
 
 /**
  * Controller handling tasks.
@@ -115,11 +117,25 @@ public class Application implements Configuration {
 	MustacheFactory mf = new DefaultMustacheFactory();
 	Mustache mustache = mf.compile(new StringReader(this.getTemplate()), TEMPLATEFILE);
 
-	params.put("views", this.getAllViews());
-	params.put("execs", this.getAllExecs());
-	params.put("processes", this.getAllProcesses());
+	params.put("views", this.convertTaskMap2TaskInfoMap(this.getAllViews()));
+	params.put("execs", this.convertTaskMap2TaskInfoMap(this.getAllExecs()));
+	params.put("processes", this.convertTaskMap2TaskInfoMap(this.getAllProcesses()));
 
 	return mustache.execute(new StringWriter(), params).toString();
+    }
+
+    private Map<String, InfoTask> convertTaskMap2TaskInfoMap(Map<String, Task> map) {
+	Map<String, InfoTask> infomap = new HashMap<String, InfoTask>();
+
+	Iterator<String> keys = map.keySet().iterator();
+
+	while (keys.hasNext()) {
+	    String key = keys.next();
+	    Task task = map.get(key);
+	    infomap.put(key, ModelUtil.convert2InfoTaskHTML(task));
+	}
+
+	return infomap;
     }
 
     public void saveTaskAsXML(Task task) {
@@ -250,6 +266,11 @@ public class Application implements Configuration {
     public Map<String, Task> getAllProcesses() {
 	return getRequestMap();
     }
+    
+    public Map<String, InfoTask> getAllProcessesHTML() {
+	return convertTaskMap2TaskInfoMap(getRequestMap());
+    }
+    
 
     public static void setXmlPath(String xmlPath) {
 	Application.xmlPath = xmlPath;

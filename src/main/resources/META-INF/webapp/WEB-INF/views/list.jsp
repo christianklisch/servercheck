@@ -3,12 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="refresh" content="300" > 
     <title>KServerControl</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/jquery-1.10.2.js"></script>	
 	<script src="js/jquery.form.js"></script>
 	<script src="js/kservercontrol.js"></script>
     <style type="text/css">
@@ -77,23 +76,10 @@
 	    <p>${processes["r0"].command}</p>
 	    
 	    ${template}
-	    
-	  	
-
 
     </div> 
-    
-<script type="text/javascript">
-$(document).ready(function() {
-		$('.taskform').ajaxForm({
-			success : function() {
-				alert("Send");
-			}
-		});
-	});
-</script>    
-    
-    
+    	
+
     <div id="footer">
       <div class="container">
          <p class="muted credit">Open Source ServerControl by <a href="http://www.christian-klisch.de">Christian Klisch</a>. Check for Updates on <a href="http://christianklisch.github.io/servercontrol">Github</a>.</p>

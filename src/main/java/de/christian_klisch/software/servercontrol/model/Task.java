@@ -105,6 +105,7 @@ public abstract class Task {
 	this.regexWarn = regexWarn;
     }
 
+    @Deprecated
     public String getStatusImage() {
 	String image = "<span class=\"badge badge-important\"><i class=\"icon-remove icon-white\"></i></span>";
 
@@ -118,6 +119,7 @@ public abstract class Task {
 	return image;
     }
 
+    @Deprecated
     public String getRequestButton() {
 	String button = "";
 
@@ -150,21 +152,25 @@ public abstract class Task {
 	return button;
     }
 
+    @Deprecated
     public String getTimeStampString() {
 	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
 	return df.format(lastExecute.getTime());
     }
 
+    @Deprecated
     public String getDateString() {
 	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 	return df.format(lastExecute.getTime());
     }
 
+    @Deprecated
     public String getTimeString() {
 	SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss.S");
 	return df.format(lastExecute.getTime());
     }
     
+    @Deprecated
     public String toString() {
 	String t = "			    <dl>" +
                         "			    	<dt>ID</dt>" +

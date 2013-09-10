@@ -68,6 +68,14 @@ This webservice includes following methods:
 * getAllViews() - returns a list with common details to each view task
 * getTaskDetail(id) - returns details to specific task id (set id as string in parameter)
 
+Following attributes are provided (only text):
+* commandText
+* descriptionText
+* idText
+* lastDateText (date only)
+* lastTimeText (time only)
+* lastResultText
+* statusText
 
 ## Configuration
 
@@ -291,25 +299,26 @@ To customize the order or count of information call attributes of the task (e.g.
 ```
 			{{# views }}
 			  {{{ r0 }}}
-			  <p>The command: {{r0.command}}</p>
-			  <p>Last execution time: {{r0.timeString}}</p>
+			  <p>The command: {{r0.commandText}}</p>
+			  <p>Last execution time: {{r0.lastTimeText}}</p>
 			{{/ views }}	
 ```
 
-You can access following task attributes like '{{r0.command}}' (task id + dot + attribute):
-* command
-* dateString (date only)
-* description
-* filename
-* id
-* lastExecute (GregorianCalendar Timestamp)
-* lastResult
-* regexOk
-* regexWarn
-* requestButton (shows button to refresh result or restart execution command)
-* statusImage (shows a red, yellow or green icon - matching regular expressions)
-* timeStampString (date and time)
-* timeString (time only)
+You can access following task attributes like '{{r0.commandText}}' (task id + dot + attribute):
+* commandText
+* descriptionText
+* idText
+* lastDateText (date only)
+* lastTimeText (time only)
+* lastResultText
+* statusText
+* lastResultHTML
+* requestButtonHTML (shows button to refresh result or restart execution command)
+* statusImageHTML (shows a red, yellow or green icon - matching regular expressions)
+* lastDateHTML (date only)
+* lastTimeHTML (time only)
+
+The postfixes 'Text' and 'HTML' differs in additional HTML-DIV-Tags for webpage
 
 Be free to build own views with lists, tables, sections, tabs, ... For more syntax details read the manual and documentation of mustache and bootstrap. 
 

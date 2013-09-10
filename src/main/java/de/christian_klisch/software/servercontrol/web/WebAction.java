@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.christian_klisch.software.servercontrol.controller.Application;
-import de.christian_klisch.software.servercontrol.model.Task;
+import de.christian_klisch.software.servercontrol.model.InfoTask;
 
 /**
  * Webcontroller to show tasks state and execute tasks selected in web
@@ -50,8 +50,6 @@ public class WebAction {
 
     @RequestMapping(value = "/list", method = RequestMethod.POST)
     public String l1(@RequestParam(value = "process", required = false) String process) {
-	System.out.println("redirect " + process);
-
 	application.executeFromWeb(process);
 	return "redirect:/list";
     }
@@ -59,7 +57,7 @@ public class WebAction {
     @RequestMapping(value = "/json", method = RequestMethod.GET)
     public @ResponseBody
     Object[] getJSON(@RequestParam(value = "process", required = false) String process) {
-	Map<String, Task> map = application.getAllProcesses();
+	Map<String, InfoTask> map = application.getAllProcessesHTML();
 	if (map != null)
 	    return map.values().toArray();
 	return null;
