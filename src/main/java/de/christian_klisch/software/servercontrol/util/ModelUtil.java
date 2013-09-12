@@ -2,6 +2,7 @@ package de.christian_klisch.software.servercontrol.util;
 
 import java.text.SimpleDateFormat;
 
+import de.christian_klisch.software.servercontrol.config.Configuration;
 import de.christian_klisch.software.servercontrol.model.InfoTask;
 import de.christian_klisch.software.servercontrol.model.InfoTaskHTML;
 import de.christian_klisch.software.servercontrol.model.ProcessExec;
@@ -28,7 +29,7 @@ import de.christian_klisch.software.servercontrol.model.Task;
  *         along with this program; if not, write to the Free Software
  *         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
-public class ModelUtil {
+public class ModelUtil implements Configuration {
 
     public static InfoTaskHTML[] convert2InfoTaskHTML(Object[] task) {
 	InfoTaskHTML[] ita = null;
@@ -77,15 +78,26 @@ public class ModelUtil {
 
 	    String button = "";
 	    if (task instanceof ProcessExec) {
-		button = "<div class=\"btn-group\"><form method=\"post\" class=\"taskform\"><input type=\"hidden\" name=\"process\" value=\""
+		button = "<div class=\"btn-group\"><form method=\"post\" class=\"taskexecform\"><input type=\"hidden\" name=\"process\" value=\""
 			+ task.getId() + "\">" + task.getId()
 			+ "</input><button class=\"btn task\" type=\"submit\"><i class=\"icon-play\"></i></button></form>" + "<a href=\"#modal"
 			+ task.getId() + "\" role=\"button\" class=\"btn\" data-toggle=\"modal\">Launch demo modal</a></div>";
 
 	    }
 	    if (task instanceof ProcessView) {
-		button = "<div class=\"btn-group\"><form method=\"post\" class=\"taskform\"><input type=\"hidden\" name=\"process\" value=\""
+		button = "<div class=\"btn-group\"><form method=\"post\" class=\"taskviewform\"><input type=\"hidden\" name=\"process\" value=\""
 			+ task.getId() + "\"/><button class=\"btn task\" type=\"submit\"><i class=\"icon-refresh\"></i></button></form></div>";
+	    }
+
+	    if (task.getCommand().indexOf(PARAMETER_EXPRESSION) >= 0) {
+		button = "<div class=\"btn-group\"><form method=\"post\" class=\"taskparameterform\" id=\"form_" + task.getId()
+			+ "\"><input type=\"hidden\" name=\"process\" value=\"" + task.getId()
+			+ "\"/><button class=\"btn task taskdialog\" ><i class=\"icon-play\"></i></button>" + "<div id=\"dialog-form_" + task.getId()
+			+ "\" class=\"dialog-form\" title=\"Execute Task\">" + "<p class=\"\">Insert a value for parameter.</p>" + "" + "<fieldset>"
+			+ "<label >Parameter</label>"
+			+ "<input type=\"text\" name=\"parameterP\" class=\"parameterP\" class=\"text ui-widget-content ui-corner-all\" />"
+			+ "<input type=\"hidden\" name=\"processP\" class=\"processP\" value=\"" + task.getId() + "\"/>" + "</fieldset>" + ""
+			+ "</div></form></div>";
 	    }
 
 	    infotaskHTML.setRequestButtonHTML(button);

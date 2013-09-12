@@ -224,7 +224,7 @@ public class Application implements Configuration {
 	this.saveTaskAsXML(process);
     }
 
-    public void executeFromWeb(String key) {
+    public void executeFromWeb(String key, String parameter) {
 	this.executeProcess(readTaskFromMap(key));
     }
 

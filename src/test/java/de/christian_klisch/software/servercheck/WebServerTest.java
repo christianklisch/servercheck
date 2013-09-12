@@ -10,6 +10,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.junit.Test;
 
 import de.christian_klisch.software.servercontrol.Main;
 import de.christian_klisch.software.servercontrol.config.Configuration;
@@ -37,6 +38,7 @@ import de.christian_klisch.software.servercontrol.controller.Application;
  */
 public class WebServerTest extends TestCase implements Configuration {
 
+    @Test
     public void appShouldBeRunningAndMainPageIsAvailable() throws Exception {
 
 	Properties prop = new Properties();
@@ -76,6 +78,7 @@ public class WebServerTest extends TestCase implements Configuration {
 	assertEquals(response.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
     }
 
+    @Test
     public void testTruetest() {
 	assertTrue(true);
     }

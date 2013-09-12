@@ -49,8 +49,13 @@ public class WebAction {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public String l1(@RequestParam(value = "process", required = false) String process) {
-	application.executeFromWeb(process);
+    public String l1(@RequestParam(value = "process", required = false) String process,
+	    @RequestParam(value = "parameter", required = false) String parameter) {
+	System.out.println("POST " + process + " " + parameter);
+	if(process == null)
+	    return "redirect:/list";
+	
+	application.executeFromWeb(process, parameter);
 	return "redirect:/list";
     }
 

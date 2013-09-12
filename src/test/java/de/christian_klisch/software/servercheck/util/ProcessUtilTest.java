@@ -1,9 +1,15 @@
-package de.christian_klisch.software.servercontrol.service;
+package de.christian_klisch.software.servercheck.util;
 
+import org.junit.Test;
+
+import de.christian_klisch.software.servercontrol.model.CommandExec;
 import de.christian_klisch.software.servercontrol.model.Task;
+import de.christian_klisch.software.servercontrol.util.ProcessUtil;
+
+import junit.framework.TestCase;
 
 /**
- * Interface for task processor.
+ * JUnit Test.
  * 
  * @author Christian Klisch
  * 
@@ -22,10 +28,16 @@ import de.christian_klisch.software.servercontrol.model.Task;
  *         along with this program; if not, write to the Free Software
  *         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
-public interface ProcessorIF {
+public class ProcessUtilTest extends TestCase {
 
-    public void execute(Task task);
+    @Test
+    public void testSetTaskParameter() {
+	Task t = new CommandExec();
+	t.setCommand("echo word %PARAMETER with something");
 
-    public String getClassType();
+	ProcessUtil.setTaskParameter(t, "myId");
+
+	assertTrue(t.getCommand().indexOf("myId") >= 0);
+    }
 
 }

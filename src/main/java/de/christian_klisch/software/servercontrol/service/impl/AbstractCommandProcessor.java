@@ -55,6 +55,7 @@ public class AbstractCommandProcessor implements Configuration {
 		FileUtils.writeStringToFile(new File(SCRIPTDIR + timestamp + SCRIPTFILELIN), v.getCommand());
 		if (((CommandView) v).getSshserver() != null && !((CommandView) v).getSshserver().isEmpty()) {
 		    returnvalue = this.executeOnSSH((Command) v, timestamp + SCRIPTFILELIN);
+		    new File(SCRIPTDIR + timestamp + SCRIPTFILELIN).delete();
 		} else {
 		    Runtime.getRuntime().exec("chmod 775 " + SCRIPTDIR + timestamp + SCRIPTFILELIN);
 		    p = Runtime.getRuntime().exec(SCRIPTDIR + timestamp + SCRIPTFILELIN);
@@ -66,13 +67,14 @@ public class AbstractCommandProcessor implements Configuration {
 		FileUtils.writeStringToFile(new File(SCRIPTDIR + timestamp + SCRIPTFILEWIN), v.getCommand());
 		if (((CommandView) v).getSshserver() != null && !((CommandView) v).getSshserver().isEmpty()) {
 		    returnvalue = this.executeOnSSH((Command) v, timestamp + SCRIPTFILEWIN);
+		    new File(SCRIPTDIR + timestamp + SCRIPTFILEWIN).delete();
 		} else {
 		    p = Runtime.getRuntime().exec(SCRIPTDIR + timestamp + SCRIPTFILEWIN);
 		    p.waitFor();
 		    new File(SCRIPTDIR + timestamp + SCRIPTFILEWIN).delete();
 		}
 	    }
-	    
+
 	    if (p != null) {
 		returnvalue = IOUtils.toString(p.getInputStream(), "UTF-8");
 		if (returnvalue != null) {
@@ -84,7 +86,7 @@ public class AbstractCommandProcessor implements Configuration {
 		returnvalue = returnvalue.trim();
 		returnvalue = returnvalue.replaceAll("[\\r\\n]", "");
 	    }
-	    
+
 	} catch (IOException e) {
 	    e.printStackTrace();
 	} catch (InterruptedException e) {
@@ -102,19 +104,38 @@ public class AbstractCommandProcessor implements Configuration {
 	SSHExec ssh = SSHExec.getInstance(cb);
 	SSHExec.setOption(IOptionName.HALT_ON_FAILURE, false);
 	SSHExec.setOption(IOptionName.INTEVAL_TIME_BETWEEN_TASKS, 500l);
+	SSHExec.setOption(IOptionName.TIMEOUT, 36000l);
 	ssh.connect();
 
 	try {
 	    // upload
 	    ssh.uploadSingleDataToServer(SCRIPTDIR + scriptname, s.getSshdirectory());
 
+	    Thread.sleep(500l);
+
 	    CustomTask ct1 = new ExecCommand("chmod 775 " + s.getSshdirectory() + scriptname);
 	    ssh.exec(ct1);
 
-	    CustomTask ct2 = new ExecShellScript(s.getSshdirectory() + scriptname);
+	    Thread.sleep(500l);
 
+	    CustomTask ct2 = new ExecShellScript(s.getSshdirectory() + scriptname);
 	    Result r = ssh.exec(ct2);
-	    returnvalue = r.sysout;
+	    
+	    //ExecShellScript ct4 = new ExecShellScript(s.getSshdirectory() + scriptname);
+	    //
+	    //ExecCommand ct5 = new ExecCommand("chmod 775 " + s.getSshdirectory() + scriptname);
+	   
+	    
+	    Thread.sleep(500l);
+	    System.out.println(s.getCommand() + " +++ " + r.sysout);
+
+	    if (r.isSuccess) {
+		returnvalue = r.sysout;
+	    } else {
+		returnvalue = r.error_msg;
+	    }
+
+	    // returnvalue = r.sysout;
 
 	    // delete
 	    CustomTask ct3 = new ExecCommand("rm " + s.getSshdirectory() + scriptname);
@@ -123,9 +144,10 @@ public class AbstractCommandProcessor implements Configuration {
 	    e.printStackTrace();
 	} catch (Exception e) {
 	    e.printStackTrace();
+	} finally {
+	    ssh.disconnect();
 	}
 
-	ssh.disconnect();
 	return returnvalue;
     }
 }

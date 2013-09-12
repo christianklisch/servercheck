@@ -3,6 +3,8 @@ package de.christian_klisch.software.servercheck.util;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
+import org.junit.Test;
+
 import junit.framework.TestCase;
 import de.christian_klisch.software.servercontrol.model.CommandView;
 import de.christian_klisch.software.servercontrol.model.InfoTask;
@@ -33,6 +35,7 @@ import de.christian_klisch.software.servercontrol.util.ModelUtil;
  */
 public class ModelUtilTest extends TestCase {
 
+    @Test
     public void testSingleTask() {
 	Task t = new CommandView();
 	t.setId("s1");
@@ -58,6 +61,7 @@ public class ModelUtilTest extends TestCase {
 	assertTrue(h.toString().length() > 100);
     }
 
+    @Test
     public void testMapToInfoList() {
 	Task t1 = new CommandView();
 	Task s2 = new SqlView();

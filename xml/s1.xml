@@ -2,9 +2,9 @@
   <filename>s1.xml</filename>
   <id>s1</id>
   <command>SELECT COUNT(*) FROM actions</command>
-  <lastResult>12</lastResult>
+  <lastResult></lastResult>
   <lastExecute>
-    <time>1378209218601</time>
+    <time>1378999216482</time>
     <timezone>Europe/Berlin</timezone>
   </lastExecute>
   <databaseType>MySQL</databaseType>

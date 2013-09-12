@@ -1,5 +1,7 @@
 package de.christian_klisch.software.servercheck.service;
 
+import org.junit.Test;
+
 import junit.framework.TestCase;
 import de.christian_klisch.software.servercontrol.controller.Application;
 import de.christian_klisch.software.servercontrol.model.Sql;
@@ -29,6 +31,7 @@ import de.christian_klisch.software.servercontrol.service.impl.SqlViewProcessor;
  */
 public class SqlViewProcessorTest extends TestCase  {   
    
+    @Test
     public void testViewSqk()
     {
 	Sql sql = new SqlView();

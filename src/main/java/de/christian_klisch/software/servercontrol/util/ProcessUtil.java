@@ -1,9 +1,10 @@
-package de.christian_klisch.software.servercontrol.service;
+package de.christian_klisch.software.servercontrol.util;
 
+import de.christian_klisch.software.servercontrol.config.Configuration;
 import de.christian_klisch.software.servercontrol.model.Task;
 
 /**
- * Interface for task processor.
+ * Utility 4 processing
  * 
  * @author Christian Klisch
  * 
@@ -22,10 +23,13 @@ import de.christian_klisch.software.servercontrol.model.Task;
  *         along with this program; if not, write to the Free Software
  *         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
-public interface ProcessorIF {
+public class ProcessUtil implements Configuration {
 
-    public void execute(Task task);
-
-    public String getClassType();
-
+    public static void setTaskParameter(Task task, String parameter)
+    {
+	String command = task.getCommand();
+	command = command.replaceAll(PARAMETER_EXPRESSION, parameter);
+	task.setCommand(command);
+    }
+    
 }

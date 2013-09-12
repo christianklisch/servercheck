@@ -278,6 +278,14 @@ Description of the tags:
 
 Note: Oracle can only connect to instances and not to services.
 
+#### Parameter in execution tasks
+
+Requesting a execution task in the webinterface will open a modal window asking for a parameter to set. Use one parameter (expression = %PARAMETER) in the command-Tag of every execution task:
+```
+	<command>start programm checkit.exe -p %PARAMETER</command>
+```
+
+
 ### Webinterface template
 
 The webinterface template is saved in './bin/config/template.xhtml'. You can use HTML-Tags with style-attributes to design you own overview. The layout is embedded into the [Bootstrap 2.3.2](http://getbootstrap.com/2.3.2/) div-class 'container' (look the markup for more details). To insert task information or control buttons use the [moustache](http://mustache.github.io/) syntax like in following examples.  

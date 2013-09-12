@@ -1,12 +1,12 @@
 <commandView>
   <filename>r0.xml</filename>
   <id>r0</id>
-  <description>Skript returning value 0 WIN-ONLY</description>
+  <description>Skript returning value 0 WIN-ONLY ' ' 'ffd // </description>
   <command>@echo off
 echo 0</command>
   <lastResult>0</lastResult>
   <lastExecute>
-    <time>1378209218669</time>
+    <time>1378999204457</time>
     <timezone>Europe/Berlin</timezone>
   </lastExecute>
   <regexOk>0</regexOk>
