@@ -70,19 +70,23 @@ public class ModelUtilTest extends TestCase {
 	s2.setId("s2");
 	t1.setLastResult("t1res");
 	s2.setLastResult("s2res");
-
+	t1.setCommand("cmd test");
+	s2.setCommand("echo set");
+	
 	HashMap<String, Task> map = new HashMap<String, Task>();
 	map.put(t1.getId(), t1);
 	map.put(s2.getId(), s2);
 
-	InfoTask[] list = ModelUtil.convert2InfoTask(map.values().toArray());
+	Object[] a = map.values().toArray();
+	
+	InfoTask[] list = ModelUtil.convert2InfoTask(a);
 
 	assertTrue(list[0].getIdText().equals("s2"));
 	assertTrue(list[1].getIdText().equals("t1"));
 	assertTrue(list[0].getLastResultText().equals("s2res"));
 	assertTrue(list[1].getLastResultText().equals("t1res"));
 
-	InfoTaskHTML[] listHTML = ModelUtil.convert2InfoTaskHTML(map.values().toArray());
+	InfoTaskHTML[] listHTML = ModelUtil.convert2InfoTaskHTML(a);
 
 	assertTrue(listHTML[0].getIdText().equals("s2"));
 	assertTrue(listHTML[1].getIdText().equals("t1"));
